@@ -7,12 +7,14 @@ const NoLibaray = () => {
         let interval: NodeJS.Timeout;
         interval = setInterval(() => {
             setPost(prevPost => (prevPost < 200) ? prevPost + 5 : 0)
-        }, 1000)
+        }, 50)
         return () => clearInterval(interval);
     }, [])
     return (
-        <View style={styles.box}>
+        <View >
+            <View style={[styles.box, { marginLeft: post }]} />
         </View>
+
     )
 }
 
