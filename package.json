@@ -7,11 +7,14 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "pod-install": "cd ios && RCT_NEW_ARCH_ENABLED=1 pod install"
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.78.1"
+    "react-native": "0.78.1",
+    "react-native-gesture-handler": "^2.24.0",
+    "react-native-reanimated": "^3.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

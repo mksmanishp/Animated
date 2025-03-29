@@ -3,6 +3,7 @@ import React from 'react'
 import NoLibaray from './tutortails/NoLibaray'
 import Basic from './tutortails/AnimatedAPI/Basic'
 import ValueXY from './tutortails/AnimatedAPI/ValueXY'
+import RNBasic from './tutortails/Reanimated/RNBasic'
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
       <Text style={styles.text}>Animations</Text>
       {/* <NoLibaray /> */}
       {/* <Basic /> */}
-      <ValueXY />
+      {/* <ValueXY /> */}
+      <RNBasic />
     </View>
   )
 }
