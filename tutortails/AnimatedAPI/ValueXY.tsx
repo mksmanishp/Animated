@@ -22,6 +22,28 @@ const ValueXY = () => {
         })
     }
 
+    const pos1 = useAnimatedValue(50)
+    const pos2 = useAnimatedValue(0)
+    const combined = Animated.add(pos1, pos2)
+
+    const movecircle = () => {
+        Animated.loop(
+            Animated.parallel([
+                Animated.timing(pos1, {
+                    toValue: 50,
+                    duration: 100,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(pos1, {
+                    toValue: -50,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+            ]), { iterations: 500 }
+        ).start();
+    };
+
+
     const moveBox = () => {
         Animated.timing(xyValue, {
             toValue: { x: 50, y: 200 },
@@ -32,8 +54,9 @@ const ValueXY = () => {
     }
 
     useEffect(() => {
-        startAnimation()
-        moveBox()
+        // startAnimation()
+        //  moveBox()
+        movecircle()
     }, [])
 
     return (
@@ -42,6 +65,14 @@ const ValueXY = () => {
             {/* <Animated.View style={[styles.box1, xyValue.getLayout()]} /> */}
             <Animated.View
                 style={[styles.box1, { transform: xyValue.getTranslateTransform() }]}
+            />
+            <Animated.View
+                style={[styles.circle, {
+                    transform: [{
+                        translateX: combined,
+
+                    }]
+                }]}
             />
         </View>
     )
@@ -60,5 +91,13 @@ const styles = StyleSheet.create({
         width: 50,
         backgroundColor: 'orange',
         marginTop: 10
+    },
+    circle: {
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        backgroundColor: 'green',
+        marginTop: 20
+
     }
 })
